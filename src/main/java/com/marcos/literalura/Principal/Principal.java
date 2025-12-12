@@ -32,6 +32,7 @@ public class Principal {
                     4- listar autores vivos en un determinado año
                     5- listar libros por idioma
                     6- encontrar autor por nombre
+                    7- Top 10 libros
                     0- salir
                     """);
             opcion = sn.nextInt();
@@ -56,6 +57,9 @@ public class Principal {
                 case 6:
                     obtenerAutorPorNombre();
                     break;
+                case 7:
+                    top10Libros();
+                    break;
                 case 0:
                     System.out.println("Saliendo del programa");
                     break;
@@ -64,6 +68,10 @@ public class Principal {
                     break;
             }
         }
+    }
+
+    private void top10Libros() {
+        libroRepository.findTop10ByOrderByDescargasDesc().forEach(System.out::println);
     }
 
     private void obtenerAutorPorNombre() {

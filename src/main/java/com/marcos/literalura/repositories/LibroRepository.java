@@ -22,4 +22,6 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
 
     @Query("SELECT DISTINCT a FROM Libro l JOIN l.autores a WHERE a.name ILIKE %:name%")
     Optional<List<Autor>> getAuthorByName(String name);
+
+    List<Libro> findTop10ByOrderByDescargasDesc();
 }
